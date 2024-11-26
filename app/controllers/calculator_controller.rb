@@ -19,7 +19,7 @@ class CalculatorController < ApplicationController
     @the_num = params.fetch("input_number").to_f
     @the_result = Math.sqrt(@the_num).to_f
 
-    render({:template => "calculator_templates/square_rppt_results"})
+    render({:template => "calculator_templates/square_root_results"})
   end
 
   
@@ -51,7 +51,10 @@ class CalculatorController < ApplicationController
   end
     
   def random_results
+    @min = params.fetch("min").to_f
+    @max = params.fetch("max").to_f
+    @random = rand(@min...@max).to_f
     render({:template => "calculator_templates/random_results"})
   end
 
-  
+end
